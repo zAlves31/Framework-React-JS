@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>strings</title>
+</head>
+<body>
+    
+    <h1>NickName</h1>
+
+    <form onsubmit="Nickname()">
+        <fieldset>
+        <label for="nome">Nome</label> 
+        <input type="text" id="nome" placeholder="digite seu nome">
+        <br><br>
+        
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" placeholder="como prefere ser chamado">
+        <br><br>
+        <p id="res-nick"></p>
+
+        <br><br>
+        <button>Exibir Nick</button>
+
+        </fieldset>
+    </form>
+
+<script>
+    function saudacao() {
+        event.preventDefault();
+      let nome = document.getElementById('nome').value;
+      let nick = document.getElementById('nickname').value;
+
+      document.getElementById('res-nick').innerHTML = nome.replace(nome, `Ola, ${nick}`);  
+    }
+   
+</script>
+
+</body>
+</html>
