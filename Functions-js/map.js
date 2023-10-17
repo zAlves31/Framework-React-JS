@@ -1,31 +1,8 @@
 const mumeros = [1, 2, 5, 10, 300];
 
-const mesa = ["Coral", "Anna", "Demetrio", "Vinicius", "Lacerda", "Evelyn", "Luiz",]
+const arrDobro = numeros.map( (n) => {
+    return n * 2;
+})
 
-//calback functions
-// mesa.forEach(
-//     function Carlos(cadaPessoa) {
-//         console.log('Bom dia' + cadaPessoa);
-//     }
-// );
-
-
-//funcao anonima
-// mesa.forEach(
-//     function (cadaPessoa) {
-//         console.log( 'Bom dia ' + cadaPessoa );
-//     }
-// );
-
-//arrow functions
-mesa.forEach( (cadaPessoa) => {
-        console.log( 'Bom dia ' + cadaPessoa );
-    }
-);
-
-
-// const dobro = function(x) {
-//     return x * 356;
-// }
-
-// console.log( dobro(874) );
+console.log(numeros);
+console.log(arrDobro);
