@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="cadastar(event)">
+        <label for="nome">Nome</label>
+        <input type="text" placeholder="..." id="nome">
+        <br><br>
+
+        <label for="email">Email</label>
+        <input type="text" placeholder="..." id="email">
+        <br><br>
+
+        <label for="cep">CEP</label>
+        <input type="number" anblur="buscarEndereco(this.value)" placeholder="Digite seu cep" id="cep">
+        <span id="not-found"></span>
+        <br><br>
+
+        <label for="endereco">Endereco</label>
+        <input type="text" placeholder="..." id="endereco">
+        <br><br>
+
+        <label for="numero">Numero</label>
+        <input type="text" placeholder="..." id="numero">
+        <br><br>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" placeholder="..." id="cidade">
+        <br><br>
+
+        <label for="estado">Estado</label>
+        <input type="text" placeholder="..." id="estado">
+        <br><br>
+
+        <button>Cadastar</button>
+
+        <script src="./funcoes.js">
+            
+        </script>
+    </form>
+</body>
+</html>
