@@ -1,11 +1,11 @@
 import React from 'react';
 
-const LoginPage = () => {
+const EventosPage = () => {
     return (
         <div>
-            <h1>Eventos Page</h1>
+            <h1>Pagina Evento</h1>
         </div>
     );
 };
 
-export default LoginPage;
+export default EventosPage;

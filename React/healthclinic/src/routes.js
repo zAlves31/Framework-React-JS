@@ -3,18 +3,16 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
 // Imports dos componentes - PAGINAS
 import HomePage from "./pages/HomePage/HomePage";
-import EventosPage from "./pages/EventosPage/EventosPage";
-import TipoEventos from "./pages/TipoEventos/TipoEventos";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import LoginPage from "./pages/EventosPage/EventosPage";
+import MedicosPage from "./pages/TipoEventos/TipoEventos";
 
 const Rotas = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={ <HomePage /> } path={"/"} exact />
-                <Route element={ <EventosPage /> } path={"/paginaEventos"} />
-                <Route element={ <TipoEventos /> } path={"/tiposEvento"} />
-                <Route element={ <LoginPage /> } path={"/login"} />
+                <Route element={ <LoginPage /> } path={"/Pagina Eventos"} />
+                <Route element={ <MedicosPage /> } path={"/Tipos Evento"} />
             </Routes>
         </BrowserRouter>
     );

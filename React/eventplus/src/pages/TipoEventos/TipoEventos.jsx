@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProdutoPage = () => {
+const TipoEventos = () => {
     return (
         <div>
             <h1>Pagina Tipo Eventos</h1>
@@ -8,4 +8,4 @@ const ProdutoPage = () => {
     );
 };
 
-export default ProdutoPage;
+export default TipoEventos;
