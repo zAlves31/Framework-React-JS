@@ -1,0 +1,40 @@
+.section-card{
+    display: flex;
+    flex-direction: row;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+.card-evento{
+    width: 250px;
+    height: 250px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #821B47;
+    border-radius: 5px;
+    
+    
+}
+
+.card-evento__titulo{
+    font-size: 20px;
+}
+
+.card-evento__texto{
+    font-size: 18px;
+    text-align: center;
+    width: 192px;
+}
+
+.card-evento__conectar{
+    font-size: 19px;
+    color: #B51D44;
+    cursor: pointer;     
+}
+
+.card-evento__conectar--gray {
+    color: gray ;
+}
