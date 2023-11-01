@@ -1,9 +1,10 @@
 import React from 'react';
+import './EventosPage.css'
 
 const EventosPage = () => {
     return (
         <div>
-            <h1>Pagina Evento</h1>
+            <h1>Tela de Eventos</h1>
         </div>
     );
 };

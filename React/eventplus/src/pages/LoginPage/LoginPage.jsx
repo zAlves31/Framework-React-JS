@@ -1,9 +1,10 @@
 import React from 'react';
+import './LoginPage.css'
 
 const LoginPage = () => {
     return (
         <div>
-            <h1>Login Page</h1>
+            <h1>Tela de Login</h1>
         </div>
     );
 };

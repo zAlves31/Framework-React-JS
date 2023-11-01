@@ -1,23 +1,28 @@
 import React from "react";
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Imports dos componentes - PAGINAS
+import EventosPage from "./pages//EventosPage/EventosPage";
 import HomePage from "./pages/HomePage/HomePage";
-import EventosPage from "./pages/EventosPage/EventosPage";
-import TipoEventos from "./pages/TipoEventos/TipoEventos";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import TipoEventos from "./pages/TipoEventosPage/TipoEventosPage";
+import Contatos from "./pages/ContatosPage/ContatosPage"
+import Login from "./pages/LoginPage/LoginPage"
+import Header from "./componentes/Header/Header"
+import Teste from "./pages/TestePage/TestePage"
 
 const Rotas = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={ <HomePage /> } path={"/"} exact />
-                <Route element={ <EventosPage /> } path={"/eventos"} />
-                <Route element={ <TipoEventos /> } path={"/tipos-eventos"} />
-                <Route element={ <LoginPage /> } path={"/login"} />
-            </Routes>
-        </BrowserRouter>
-    );
-}
+  return (
+    <BrowserRouter>
+    <Header />
+      <Routes>
+        <Route element={<HomePage />} path={"/"} exact />
+        <Route element={<TipoEventos />} path={"/tipo-eventos"} />
+        <Route element={<EventosPage />} path={"/eventos"} />
+        <Route element={<Contatos />} path={"/contatos"} />
+        <Route element={<Login />} path={"/login"} />
+        <Route element={<Teste />} path={"/teste"}/>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default Rotas;
