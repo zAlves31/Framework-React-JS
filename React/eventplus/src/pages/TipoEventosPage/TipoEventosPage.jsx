@@ -1,12 +1,13 @@
 import React from 'react';
 import './TipoEventosPage.css'
 
-const TipoEventos = () => {
+
+const TipoEventosPage = () => {
     return (
         <div>
-            <h1>Pagina do Tipo de Eventos</h1>
+            <h1>Tipo de Eventos</h1>
         </div>
     );
 };
 
-export default TipoEventos;
+export default TipoEventosPage;

@@ -4,7 +4,7 @@ import './EventosPage.css'
 const EventosPage = () => {
     return (
         <div>
-            <h1>Tela de Eventos</h1>
+            <h1>Eventos</h1>
         </div>
     );
 };

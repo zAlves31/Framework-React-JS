@@ -1,6 +1,7 @@
 import React from 'react';
+import './PerfilUsuario.css'
 
-const Nav = () => {
+const PerfilUsuario = () => {
     return (
         <div>
             
@@ -8,4 +9,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default PerfilUsuario;

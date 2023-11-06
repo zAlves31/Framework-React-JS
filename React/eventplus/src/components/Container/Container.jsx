@@ -1,10 +1,9 @@
 import React from 'react';
-import './Container.css'
 
-const Container = ({Children}) => {
+const Container = ({children}) => {
     return (
         <div className='container'>
-            {Children}
+            {children}
         </div>
     );
 };
