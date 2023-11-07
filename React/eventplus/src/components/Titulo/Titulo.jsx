@@ -1,11 +1,17 @@
 import React from 'react';
 import './Titulo.css'
 
-const Titulo = (props) => {
+const Titulo = ({tituloTexto, color="", charmanderClass = ""}) => {
     return (
-        <div>
-            <h1>{props.text}</h1>
-        </div>
+        <h1 className={`titulo ${charmanderClass}`} style={{color: color}}>
+            {tituloTexto} 
+            <hr 
+                className='titulo__underscore' 
+                style={
+                    color !== "" ? {borderColor: color} : {}
+                }
+            />
+        </h1>
     );
 };
 

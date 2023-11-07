@@ -1,11 +1,18 @@
 import React from 'react';
-import './HomePage.css'
-// import Header from '../../components/Header/Header'
+import './HomePage.css';
+import Banner from '../../components/Banner/Banner';
+import MainContent from '../../components/Main/MainContent';
+import VisionSection from '../../components/VisionSection/VisionSection';
 
 const HomePage = () => {
     return (
        <div>
-            <h1>Home Page</h1>
+            
+            <MainContent>
+                <Banner/>
+                
+                <VisionSection/>
+            </MainContent>
        </div>
     );
 };
