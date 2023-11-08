@@ -1,5 +1,5 @@
 import React from 'react';
-import 'VisionSection.css'
+import './VisionSection.css'
 import Titulo from '../Titulo/Titulo'
 
 const VisionSection = () => {
@@ -7,11 +7,11 @@ const VisionSection = () => {
         <section className='vision'>
             <div className='vision__box'>
                 <Titulo
-                titleText={"Visao"}
-                color='white'
+                tituloTexto={"Visao"}
                 charmanderClass='vision__title'
+                color='white'
                 /> 
-                <p className='vision__text'>lorem</p>
+                <p className='vision__text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non vero ut beatae autem esse rerum voluptatum vitae incidunt voluptatem omnis quam inventore, eius officiis eveniet dicta molestiae id corrupti porro!</p>
             </div>
         </section>
     );
