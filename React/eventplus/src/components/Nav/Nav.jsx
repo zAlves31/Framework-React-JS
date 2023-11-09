@@ -33,7 +33,8 @@ const Nav = ({ exibeNavbar, setExibeNavbar }) => {
         <Link to="/tipo-eventos" className="navbar__item">Tipos de Eventos</Link>
         <Link to="/eventos" className="navbar__item">Eventos</Link>
         <Link to="/login" className="navbar__item">Login</Link>
-        <Link to="/teste" className="navbar__item">Teste</Link>
+        <Link to="/testes" className="navbar__item">Teste</Link>
+        <Link to="/teste-copy" className="navbar__item">Teste2</Link>
       </div>
     </nav>
   );
