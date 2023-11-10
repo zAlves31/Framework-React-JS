@@ -8,18 +8,18 @@ import ContactSection from '../../components/ContactSection/ContactSection';
 import NextEvent from '../../components/NextEvent/NextEvent';
 import Container  from '../../components/Container/Container';
 import Titulo from '../../components/Titulo/Titulo';
-import axios from 'axios';
+import api from '../../Services/Service';
+import { nextEventResource } from '../../Services/Service';
 
 
 
 const HomePage = () => {
     const [NextEvents, setNextEvents] = useState([])
-    const urlLocal = 'https://localhost:7118/api'
 
     useEffect(() => {
         async function getNextEvents(){
             try{
-                const promise = await axios.get(`${urlLocal}/Evento/ListarProximos`);
+                const promise = await api.get(nextEventResource);
                 const dados = await promise.data;
 
                 setNextEvents(dados);

@@ -6,8 +6,7 @@ import Titulo from "../../components/Titulo/Titulo"
 const LoginPage = () => {
     return (
         <div>
-            <h1>Login</h1>
-            {/* <Titulo text="test"/> */}
+            <Titulo tituloTexto="Login"/>
         </div>
     );
 };
