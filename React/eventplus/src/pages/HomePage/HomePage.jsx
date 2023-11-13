@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './HomePage.css';
 
 import Banner from '../../components/Banner/Banner';
-import MainContent from '../../components/Main/MainContent';
+import MainContent from '../../components/MainContent/MainContent';
 import VisionSection from '../../components/VisionSection/VisionSection';
 import ContactSection from '../../components/ContactSection/ContactSection';
 import NextEvent from '../../components/NextEvent/NextEvent';
