@@ -25,29 +25,28 @@ const TableTp = ({dados, fnDelete = null, fnUpdate = null}) => {
             <tbody> 
                 {dados.map((tp) => {
                     return(
-                        <tr className="table-data__head-row">
+                        <tr className="table-data__head-row" key={tp.idTipoEvento}>
                 <td className="table-data__data table-data__data--big">
                     {tp.titulo}
                 </td>
 
                 <td className="table-data__data table-data__data--little">
-                    <img className="table-data__icon" src={editPen} alt="" />
+                    <img 
+                        className="table-data__icon" 
+                        src={editPen} alt="" 
+                        onClick={() =>{
+                            fnUpdate(tp.idTipoEvento)
+                        }}
+                    />
                 </td>
 
-                <td 
-                    className="table-data__data table-data__data--little" 
-                    
-                >
-                    <img 
-                        idtipoevento={tp.idTipoEvento}
-                        className="table-data__icon"
-                        src={trashDelete} alt="" 
-                        onClick={(e) => {
-                            fnDelete(e.target.getAttribute('idtipoevento'))
-                        }}
-                        
-                          
-                    />
+                <td className="table-data__data table-data__data--little">
+                    <img className="table-data__icon" 
+                    src={trashDelete} alt=""
+                    onClick={() => {
+                        fnDelete(tp.idTipoEvento);
+                    }} 
+                    idtipoevento={tp.idTipoEvento} />
                 </td>
                 </tr>
                     );
