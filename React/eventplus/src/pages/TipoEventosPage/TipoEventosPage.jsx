@@ -5,10 +5,11 @@ import MainContent from "../../components/MainContent/MainContent";
 import Container from "../../components/Container/Container";
 import ImageIlustrator from "../../components/ImageIllustrator/ImageIllustrator";
 import tipoEventoImage from "../../assets/images/tipo-evento.svg";
-import Notification from "../../components/Notification/Notification";
 import { Input, Button } from "../../components/FormComponents/FormComponents";
 import api, { eventsTypeResource } from "../../Services/Service";
 import TableTp from "./TableTp/TableTp";
+import Notification from "../../components/Notification/Notification";
+import Spinner from "../../components/Spinner/Spinner"
 
 const TipoEventosPage = () => {
   //STATES
@@ -16,12 +17,19 @@ const TipoEventosPage = () => {
 
   const [titulo, setTitulo] = useState("");
 
+  const [idEvento, setIdEvento] = useState(null);
+
   const [tipoEventos, setTipoEventos] = useState([]); //state de array vazia
 
   const [notifyUser, setNotifyUser] = useState();
 
+  const [showSpinner, setShowSpinner] = useState(false);
+
   useEffect(() => {
     async function loadEventsType() {
+      setShowSpinner(false);
+      
+      
       try {
         //chamando a funcao controladora e jogando as informações da api na array vazia tipoEventos
         const retorno = await api.get(eventsTypeResource);
@@ -36,16 +44,6 @@ const TipoEventosPage = () => {
     loadEventsType();
   }, []);
 
-//  function theMagic(){
-//   setNotifyUser({
-//     titleNote: "Sucesso",
-//     textNote: "Evento excluido com sucesso",
-//     imgIcon: "success",
-//     imgAlt: "Imagem de ilustracao de sucesso. Moca segurando um balao com simbolo de confirmacao",
-//     showMessage: true
-//   })
-//   };
-
   async function handleSubmit(e) {
     e.preventDefault(); //evita o submit do formulario
     if (titulo.trim().length < 3) {
@@ -55,61 +53,108 @@ const TipoEventosPage = () => {
     try {
       //Passando state do titulo para cadastrar TiposEvento("titulo":). Vai virar um json na api
       const retorno = await api.post(eventsTypeResource, { titulo: titulo });
-      setNotifyUser({
-        titleNote: "Sucesso",
-        textNote: "Cadastrado com sucesso",
-        imgIcon: "success",
-        imgAlt: "Imagem de ilustracao de sucesso. Moca segurando um balao com simbolo de confirmacao",
-        showMessage: true
-      })
+
+      if (retorno.status == 201) {
+        theMagic("Cadastrado com sucesso");
+        const buscaEventos = await api.get(eventsTypeResource);
+
+        setTipoEventos(buscaEventos.data);
+      }
     } catch (error) {
       alert("Deu ruim no submit");
     }
   }
 
-  function handleUpdate(idElement) {
-    alert(`Vamos apagar o evento de id: ${idElement}`);
+  async function handleUpdate(e) {
+    e.preventDefault();
+
+    try{
+      const retorno = await api.put(eventsTypeResource + "/" + idEvento, {titulo : titulo});
+
+      if(retorno.status === 204){
+        setNotifyUser({
+          titleNote: "Sucesso",
+          textNote: `Cadastro atualizado com sucesso`,
+          imgIcon: "Success",
+          imgAlt:
+            "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
+          showMessage: true,
+        });
+
+        const retorno = await api.get(eventsTypeResource);
+        setTipoEventos(retorno.data)
+    }
+    }
+    
+    catch(error){
+      setNotifyUser({
+        titleNote: "Erro",
+        textNote: `Erro na operacao. por favor verifique a conexao`,
+        imgIcon: "danger",
+        imgAlt:
+          "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
+        showMessage: true,
+      });
+    }
   }
 
   //mostra o formulario de edicao
-  function showUpdateForm(idElement) {
+  async function showUpdateForm(idElement) {
     setFrmEdit(true);
+    setIdEvento(idElement)
+    try{
+      const promise = await api.get(`${eventsTypeResource}/${idElement}`, idElement)
+      setTitulo(promise.data.titulo)
+      console.log(retorno.data)
+    }
+    catch(error){ } 
   }
 
   //cancela a tela/acao de edicao (volta para o form de cadastro)
   function editActionAbort() {
     setFrmEdit(false);
+    setTitulo("");
+    setIdEvento(null);
   }
 
   //apaga o tipo de evento de api
   async function handleDelete(idElement) {
     if (window.confirm("Confirma a exclusão?")) {
-        try {
-            const caminho = await api.delete(`${eventsTypeResource}/${idElement}`);
-      
-            if (caminho.status == 204) {
-              setNotifyUser({
-                    titleNote: "Sucesso",
-                    textNote: "Cadastro apagado com sucesso",
-                    imgIcon: "success",
-                    imgAlt: "Imagem de ilustracao de sucesso. Moca segurando um balao com simbolo de confirmacao",
-                    showMessage: true
-                  })
+      try {
+        const caminho = await api.delete(`${eventsTypeResource}/${idElement}`, {
+          idElement,
+        });
 
-              const buscaEventos = await api.get(eventsTypeResource);
+        if (caminho.status == 204) {
+          theMagic("Excluido com sucesso");
+          const buscaEventos = await api.get(eventsTypeResource);
 
-              setTipoEventos(buscaEventos.data);
-            }
-          } catch (error) {
-            console.log("Deu erro no delete");
-            console.log(error);
-          }
+          setTipoEventos(buscaEventos.data);
+        }
+      } catch (error) {
+        console.log("Deu erro no delete");
+        console.log(error);
+      }
     }
+  }
+
+  function theMagic(textNote) {
+    setNotifyUser({
+      titleNote: "Sucesso",
+      textNote,
+      imgIcon: "Success",
+      imgAlt:
+        "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
+      showMessage: true,
+    });
   }
 
   return (
     <>
-    {<Notification{...notifyUser} setNotifyUser={setNotifyUser} />}
+      {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
+
+      {showSpinner ? <Spinner /> : null}
+      
       <MainContent>
         {/* formulario de cadastro do tipo de evento */}
         <section className="cadastro-evento-section">
@@ -144,11 +189,41 @@ const TipoEventosPage = () => {
                       //formulário só será chamado pois seu type é submit
                       type="submit"
                     />
-
                   </>
                 ) : (
                   //editar
-                  <p>Tela de Edição</p>
+                  <>
+                    <Input
+                      id="Titulo"
+                      placeholdder={"Titulo"}
+                      name={"titulo"}
+                      type={"text"}
+                      required={"required"}
+                      value={titulo}
+                      manipulationFunction={(e) => {
+                        setTitulo(e.target.value);
+                      }}
+                    />
+                    
+                    <div className="buttons-editbox">
+                      <Button
+                        textButton="Atualizar"
+                        id="atualizar"
+                        name="atualizar"
+                        type="submit"
+                        additionalClass="button-component--middle"
+                      />
+
+                      <Button
+                        textButton="Cancelar"
+                        id="cancelar"
+                        name="cancelar"
+                        type="submit"
+                        manipulationFunction={editActionAbort}
+                        additionalClass="button-component--middle"
+                      />
+                    </div>
+                  </>
                 )}
               </form>
             </div>

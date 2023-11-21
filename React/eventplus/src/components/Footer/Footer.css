@@ -7,12 +7,12 @@
     font-family: Poppins-Regular;
     font-size: 0.875rem;
     padding: 10px;
-    background-color: var(--color-white);
+    background-color: #0E0015;
 }
 
 .footer-page__rights {
     text-align: center;
-    color: var(--text-color);
+    color: white;
 }
 
 /* Desktop */

@@ -10,11 +10,13 @@ import Container  from '../../components/Container/Container';
 import Titulo from '../../components/Titulo/Titulo';
 import api from '../../Services/Service';
 import { nextEventResource } from '../../Services/Service';
+import Notification from "../../components/Notification/Notification";
 
 
 
 const HomePage = () => {
     const [NextEvents, setNextEvents] = useState([])
+    const [notifyUser, setNotifyUser] = useState();
 
     useEffect(() => {
         async function getNextEvents(){
@@ -24,7 +26,14 @@ const HomePage = () => {
 
                 setNextEvents(dados);
             }catch(error){
-                alert("Deu ruim na API!")
+                setNotifyUser({
+                    titleNote: "Sucesso",
+                    textNote,
+                    imgIcon: "Success",
+                    imgAlt:
+                      "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
+                    showMessage: true,
+                  });
             }
         }
 
@@ -35,6 +44,7 @@ const HomePage = () => {
        <div>
             
             <MainContent>
+                {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
                 <Banner/>
                 <section className='proximos-eventos'>
                     <Container>

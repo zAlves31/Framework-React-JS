@@ -10,6 +10,7 @@
     text-transform: uppercase;
     text-align: center;
     align-self: flex-start; /* alinhamento isolado */
+    color: white;
     /* border: 1px solid red; */
 }
 
@@ -19,7 +20,7 @@
 
     width: 70%;
     max-width: 180px;
-    border: 1px solid #B51D44;
+    border: 1px solid #C500E0;
 }
 
 .margem-acima{

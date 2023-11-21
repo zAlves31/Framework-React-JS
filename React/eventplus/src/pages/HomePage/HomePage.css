@@ -1,6 +1,9 @@
-
+body{
+  background-color: #34014B;
+}
 
 .events-box {
+  
     display: flex;
     flex-direction: column;
     align-items: center;
