@@ -10,14 +10,17 @@
     padding: 0 5px;
     border: none; /* reset de bordas */
     outline: none;
+    color: white;
 
     font-family: Poppins-Regular;
     font-size: 1rem;
-    border-bottom: 2px solid var(--color-dark-blue);
+    border-bottom: 2px solid white;
+    background-color: #34014B;
+
 }
 
 .input-component::placeholder {
-    color: var(--color-dark-blue);
+    color:white;
 }
 
 .button-component {

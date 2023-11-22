@@ -27,9 +27,9 @@ const HomePage = () => {
                 setNextEvents(dados);
             }catch(error){
                 setNotifyUser({
-                    titleNote: "Sucesso",
-                    textNote,
-                    imgIcon: "Success",
+                    titleNote: "Erro",
+                    textNote:`Erro de conexao com a Api`,
+                    imgIcon: "danger",
                     imgAlt:
                       "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
                     showMessage: true,
