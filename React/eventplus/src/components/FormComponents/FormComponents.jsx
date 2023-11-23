@@ -48,7 +48,7 @@ export const Select = ({required, id, name, options, onChange, addtionalClass = 
             <option value="">Selecione</option>
             {options.map((o) => {
                 return (
-                    <option key={Math.random()} value={o.value}>{o.text}</option>
+                    <option key={o.idTipoEvento} value={o.value}>{o.titulo}</option>
                 );
             })}
         </select>

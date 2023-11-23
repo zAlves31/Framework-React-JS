@@ -33,23 +33,23 @@ const TableE = ({ dados, fnDelete = null, fnUpdate = null }) => {
             return(
                 <tr className="table-data__head-row" key={ev.idEvento}>
                     <td className="table-data__data table-data__data--big">
-                        {ev.Nome}
+                        {ev.nomeEvento}
                     </td>
                     <td className="table-data__data table-data__data--big">
-                        {ev.tipoEvento}
+                        {ev.tiposEvento.titulo}
                     </td>
                     <td className="table-data__data table-data__data--big">
                         {ev.descricao}
                     </td>
                     <td className="table-data__data table-data__data--big">
-                        {ev.data}
+                        {new Date(ev.dataEvento).toLocaleDateString()}
                     </td>
 
                     <td className="table-data__data table-data__data--little">
-                        <img src={editPen} alt="" className="table-data__icon" onClick={() => fnUpdate(ev.idTipoEvento)}/>
+                        <img src={editPen} alt="" className="table-data__icon" onClick={() => fnUpdate(ev.idEvento)}/>
                     </td>
                     <td className="table-data__data table-data__data--little">
-                        <img src={trashDelete} alt="" className="table-data__icon" onClick={() => fnDelete(ev.idTipoEvento, ev.titulo)}/>
+                        <img src={trashDelete} alt="" className="table-data__icon" onClick={() => fnDelete(ev.idEvento)}/>
                     </td>
                 </tr>
             )
