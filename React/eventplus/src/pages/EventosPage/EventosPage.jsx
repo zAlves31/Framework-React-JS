@@ -92,6 +92,8 @@ useEffect(() => {
       const promise = await api.get(`${eventResource}/${idElement}`, idElement)
       setNome(promise.data.nomeEvento)
       setDescricao(promise.data.descricao)
+      setDate(promise.data.dataEvento.slice(0,10))
+      setTipoEventos(promise.data.idTipoEvento)
     }
     catch(error){
 
