@@ -42,7 +42,7 @@ const TableE = ({ dados, fnDelete = null, fnUpdate = null }) => {
                         {ev.descricao}
                     </td>
                     <td className="table-data__data table-data__data--big">
-                        {new Date(ev.dataEvento).toLocaleDateString()}
+                        {new Date(ev.dataEvento).toLocaleDateString()} 
                     </td>
 
                     <td className="table-data__data table-data__data--little">

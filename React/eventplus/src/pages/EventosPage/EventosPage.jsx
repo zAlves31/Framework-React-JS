@@ -130,7 +130,7 @@ const EventosPage = () => {
 
       setNotifyUser({
         titleNote: "Sucesso",
-        textNote: `${nomeEvento} Editado com sucesso`,
+        textNote: `${nomeEvento} Atualizado com sucesso`,
         imgIcon: "success",
         imgAlt:
           "Imagem de ilustracao de sucesso. Moca segurando um balao com simbolo de confirmacao ok",
@@ -281,6 +281,7 @@ const EventosPage = () => {
                       manipulationFunction={(e) => {
                         setDataEvento(e.target.value);
                       }}
+                      
                     />
 
                     <Button
