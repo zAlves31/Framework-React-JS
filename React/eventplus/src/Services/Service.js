@@ -13,7 +13,12 @@ export const nextEventResource = 'Evento/ListarProximos';
 /**
  * Rota para o recurso Tipos de Eventos
  */
-export const eventsTypeResource = '/TiposEvento'
+export const eventsTypeResource = '/TiposEvento';
+
+/**
+ * Rota para o recurso Login
+ */
+export const loginResource = '/Login';
 
 const apiPort = '7118';
 const localApiUri = `https://localhost:${apiPort}/api`
