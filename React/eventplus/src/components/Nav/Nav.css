@@ -34,7 +34,7 @@
 
     font-family: Poppins-Thin;
     font-size: 2rem;
-    color: #34014B;
+    color: #0E0015;
     cursor: pointer;
 }
 
@@ -123,4 +123,5 @@
         color: white;
         border: none;
     }
+    
 }
