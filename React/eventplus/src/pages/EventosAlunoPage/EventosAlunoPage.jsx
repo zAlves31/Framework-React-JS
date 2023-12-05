@@ -10,7 +10,7 @@ import Modal from "../../components/Modal/Modal";
 import api, { eventResource, myEventsResource } from "../../Services/Service";
 
 import "./EventosAlunoPage.css";
-import { UserContex } from "../../context/AuthContext"
+import { UserContex } from "../../context/AuthContext";
 import Notification from "../../components/Notification/Notification";
 
 const EventosAlunoPage = () => {
@@ -35,48 +35,63 @@ const EventosAlunoPage = () => {
     setShowSpinner(true);
 
     async function loadEventsType() {
-      if(tipoEvento === "1"){//chamar api todos os eventos
+      if (tipoEvento === "1") {
+        //chamar api todos os eventos
         try {
-          const retornoEventos = await api.get(eventResource)
-          setEventos(retornoEventos.data)
+          const retornoEventos = await api.get(eventResource);
+          setEventos(retornoEventos.data);
           console.log(retornoEventos.data);
         } catch (error) {
           setNotifyUser({
             titleNote: "Erro",
-            textNote:`Erro de conexao com a Api`,
+            textNote: `Erro de conexao com a Api`,
             imgIcon: "danger",
             imgAlt:
               "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
             showMessage: true,
           });
         }
-      }else {// chamar api meus eventos
+      } else if (tipoEvento === "2") {
         try {
-          const retornoEventos = await api.get(`${myEventsResource}/${userData.id}`);
+          const retornoEventos = await api.get(
+            `${myEventsResource}/${userData.id}`
+          );
           const arrEventos = [];
 
-          retornoEventos.data.forEach( e => {
+          retornoEventos.data.forEach((e) => {
             arrEventos.push(e.evento);
           });
           setEventos(arrEventos);
-
         } catch (error) {
           setNotifyUser({
             titleNote: "Erro",
-            textNote:`Erro de conexao com a Api`,
+            textNote: `Erro de conexao com a Api`,
             imgIcon: "danger",
             imgAlt:
               "Imagem de ilustração de sucesso. Moça segurando um balão com simbolo d confirmação",
             showMessage: true,
           });
         }
+      } else {
+        // chamar api meus eventos
+        setEventos([]);
       }
       setShowSpinner(false);
     }
-    
 
     loadEventsType();
   }, [tipoEvento, userData.userId]);
+
+  const verificaPresenca = (arrAllEvents, eventsUser) => {
+    for (let x = 0; x < arrAllEvents.length; x++){
+      for(let i = 0; i < eventsUser.length; i++){
+        if(arrAllEvents[x].idEvento === eventsUser[i].idEvento){
+          arrAllEvents[x].situacao = true;
+          break;
+        }  
+      }  
+    }
+  }
 
   // toggle meus eventos ou todos os eventos
   function myEvents(tpEvent) {
