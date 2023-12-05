@@ -13,7 +13,7 @@ import { UserContex, userDecodeToken } from "../../context/AuthContext";
 
 const LoginPage = () => {
 
-    const [user,SetUser] = useState({email:"joao@email.com", senha:""});
+    const [user,SetUser] = useState({email:"joao@email.com", senha:"123456"});
     const {userData, setUserData} = useContext(UserContex);
     const navigate = useNavigate();
     

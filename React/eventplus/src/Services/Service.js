@@ -20,6 +20,11 @@ export const eventsTypeResource = '/TiposEvento';
  */
 export const loginResource = '/Login';
 
+/*
+* Rota para o recurso listar meus eventos
+*/
+export const myEventsResource = 'Presencas/ListarMinhas';
+
 const apiPort = '7118';
 const localApiUri = `https://localhost:${apiPort}/api`
 const externalApiUri = null;
