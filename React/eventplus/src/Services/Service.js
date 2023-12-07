@@ -25,6 +25,11 @@ export const loginResource = '/Login';
 */
 export const myEventsResource = 'Presencas/ListarMinhas';
 
+/*
+* Rota para o recurso Presenca Evento
+ */
+export const presenceEventResource = '/Presencas'
+
 const apiPort = '7118';
 const localApiUri = `https://localhost:${apiPort}/api`
 const externalApiUri = null;

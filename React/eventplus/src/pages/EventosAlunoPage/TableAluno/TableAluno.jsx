@@ -1,13 +1,11 @@
 import React from "react";
 import comentaryIcon from "../../../assets/images/comentary-icon.svg";
-import trashDelete from "../../../assets/images/trash-delete.svg";
 import { dateFormatDbToView } from "../../../Utils/stringFunctions";
 import ToggleSwitch from "../../../components/Toggle/Toggle";
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
-// import trashDelete from "../../../assets/images/trash-delete.svg";
 import "./TableAluno.css";
 
 const TableAluno = ({ dados, fnConnect = null, fnShowModal = null }) => {
@@ -35,7 +33,7 @@ const TableAluno = ({ dados, fnConnect = null, fnShowModal = null }) => {
       <tbody>
         {dados.map((e) => {
           return (
-            <tr className="tbal-data__head-row" key={Math.random()}>
+            <tr className="tbal-data__head-row" key={e.idEvento}>
               <td className="tbal-data__data tbal-data__data--big">
                 {e.nomeEvento}
               </td>
@@ -68,7 +66,16 @@ const TableAluno = ({ dados, fnConnect = null, fnShowModal = null }) => {
                   onClick={fnShowModal}
                 />
 
-                <ToggleSwitch manipulationFunction={fnConnect} />
+                <ToggleSwitch
+                  toggleActive={e.situacao}
+                  manipulationFunction={() => {
+                    fnConnect(
+                      e.idEvento, 
+                      e.situacao ? "unnconnect" : "connect",
+                      e.idPresencaEvento
+                      );
+                  }}
+                />
               </td>
             </tr>
           );
