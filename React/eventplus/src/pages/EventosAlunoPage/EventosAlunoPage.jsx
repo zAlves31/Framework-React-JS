@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import MainContent from "../../components/MainContent/MainContent";
 import Titulo from "../../components/Titulo/Titulo";
 import Table from "./TableAluno/TableAluno";
@@ -6,9 +6,9 @@ import Container from "../../components/Container/Container";
 import { Select } from "../../components/FormComponents/FormComponents";
 import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
-import api, { eventResource, myEventsResource, presenceEventResource } from "../../Services/Service";
+import api, { eventResource, myEventsResource, presenceEventResource, commentaryEventResource } from "../../Services/Service";
 import "./EventosAlunoPage.css";
-import { UserContex } from "../../context/AuthContext";
+import {UserContex} from "../../context/AuthContext";
 import Notification from "../../components/Notification/Notification";
 
 const EventosAlunoPage = () => {
@@ -16,14 +16,17 @@ const EventosAlunoPage = () => {
   const [notifyUser, setNotifyUser] = useState();
   const [eventos, setEventos] = useState([]);
   // select mocado
-  const [quaisEventos, setQuaisEventos] = useState([
+  //const [quaisEventos, setQuaisEventos] = useState([
+  const quaisEventos = [
     { value: 1, titulo: "Todos os eventos" },
     { value: 2, titulo: "Meus eventos" },
-  ]);
+  ];
 
   const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
   const [showSpinner, setShowSpinner] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [idEvento, setIdEvento] = useState();
+  const [comentario, setComentario] = useState("");
 
   // recupera os dados globais do usuário
   const { userData, setUserData } = useContext(UserContex);
@@ -90,16 +93,31 @@ const EventosAlunoPage = () => {
     setTipoEvento(tpEvent);
   }
 
-  async function loadMyComentary() {
-    return "????";
+  const loadMyComentary = async (idUsuario, idEvento) => {
+
+    try {
+      console.clear();
+      console.log(idUsuario, idEvento);
+      const promise = await api.get(`${commentaryEventResource}?idUsuario=${idUsuario}&idEvento=${idEvento}`);
+      console.log(promise.data[0].descricao);
+      console.log(promise.data);
+
+        setComentario(promise.data[0].descricao);
+      
+    } catch (error) {
+      alert(error)
+      
+    }
+    
   }
 
   async function postMyComentary() {
     return "????";
   }
 
-  const showHideModal = () => {
+  const showHideModal = (idEvent) => {
     setShowModal(showModal ? false : true);
+    setUserData({...userData, idEvento: idEvent });
   };
 
   const commentaryRemove = () => {
@@ -131,7 +149,7 @@ const EventosAlunoPage = () => {
         alert("Presença cancelada!");
       }
     } catch (error) {
-      alert("Error na api");
+      alert(error);
     }
   }
   return (
@@ -149,16 +167,14 @@ const EventosAlunoPage = () => {
             required={true}
             options={quaisEventos} // aqui o array dos tipos
             manipulationFunction={(e) => myEvents(e.target.value)} // aqui só a variável state
-            defaultValue={tipoEvento}
+            value={tipoEvento}
             addtionalClass="select-tp-evento"
           />
 
           <Table
             dados={eventos}
             fnConnect={handleConnect}
-            fnShowModal={() => {
-              showHideModal();
-            }}
+            fnShowModal={showHideModal}
           />
         </Container>
       </MainContent>
@@ -168,11 +184,13 @@ const EventosAlunoPage = () => {
 
       {showModal ? (
         <Modal
-          userId={userData.id}
+          // userId={userData.id}
           showHideModal={showHideModal}
           fnGet={loadMyComentary}
           fnPost={postMyComentary}
           fnDelete={commentaryRemove}
+          // idEvento={idEvento}
+          comentaryText={comentario}
         />
       ) : null}
     </>

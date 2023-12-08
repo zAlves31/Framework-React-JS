@@ -47,6 +47,15 @@
     text-transform: uppercase;
     color: white;
   }
+
+  .modal__close {
+    align-self: flex-end;
+    font-family: Poppins-Regular;
+    font-size: 1.3rem;
+    color: var(--color-red);
+    cursor: pointer;
+  }
+  
   .comentary {
     display: flex;
     justify-content: space-between;

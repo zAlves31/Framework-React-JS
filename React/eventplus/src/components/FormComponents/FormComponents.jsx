@@ -37,7 +37,7 @@ export const Label = ({htmlFor, labelText}) => {
     );
 }
 
-export const Select = ({required, id, name, options, manipulationFunction, addtionalClass = "", value}) => {
+export const Select = ({required, id, name, options = [], manipulationFunction, addtionalClass = "", value}) => {
     return(
         <select 
         name={name} 
